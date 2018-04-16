@@ -26,7 +26,7 @@ class App extends React.Component {
         const p = new THREE.Vector3()
           .fromArray(gamepad.pose.position);
         const e = new THREE.Euler()
-          .setFromQuaternion(new THREE.Quaternion().fromArray(gamepad.pose.orientation));
+          .setFromQuaternion(new THREE.Quaternion().fromArray(gamepad.pose.orientation), 'YXZ');
 
         trigger = gamepad.buttons[1].pressed;
 
