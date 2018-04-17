@@ -68,7 +68,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({9:[function(require,module,exports) {
+})({10:[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -160,7 +160,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],12:[function(require,module,exports) {
+},{}],18:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -178,7 +178,7 @@ if ("development" !== 'production') {
 }
 
 module.exports = emptyObject;
-},{}],17:[function(require,module,exports) {
+},{}],13:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -215,7 +215,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],7:[function(require,module,exports) {
+},{}],8:[function(require,module,exports) {
 /** @license React v16.3.1
  * react.production.min.js
  *
@@ -239,7 +239,7 @@ _calculateChangedBits:b,_defaultValue:a,_currentValue:a,_changedBits:0,Provider:
 c)&&!J.hasOwnProperty(c)&&(d[c]=void 0===b[c]&&void 0!==k?k[c]:b[c])}c=arguments.length-2;if(1===c)d.children=e;else if(1<c){k=Array(c);for(var l=0;l<c;l++)k[l]=arguments[l+2];d.children=k}return{$$typeof:r,type:a.type,key:g,ref:h,props:d,_owner:f}},createFactory:function(a){var b=K.bind(null,a);b.type=a;return b},isValidElement:L,version:"16.3.1",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:H,assign:m}},W=Object.freeze({default:V}),X=W&&V||W;
 module.exports=X["default"]?X["default"]:X;
 
-},{"object-assign":9,"fbjs/lib/emptyObject":12,"fbjs/lib/emptyFunction":17}],18:[function(require,module,exports) {
+},{"object-assign":10,"fbjs/lib/emptyObject":18,"fbjs/lib/emptyFunction":13}],22:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -293,7 +293,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-},{}],20:[function(require,module,exports) {
+},{}],19:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -356,7 +356,7 @@ if ("development" !== 'production') {
 }
 
 module.exports = warning;
-},{"./emptyFunction":17}],11:[function(require,module,exports) {
+},{"./emptyFunction":13}],12:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -370,7 +370,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],10:[function(require,module,exports) {
+},{}],11:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -430,7 +430,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
-},{"fbjs/lib/invariant":18,"fbjs/lib/warning":20,"./lib/ReactPropTypesSecret":11}],8:[function(require,module,exports) {
+},{"fbjs/lib/invariant":22,"fbjs/lib/warning":19,"./lib/ReactPropTypesSecret":12}],9:[function(require,module,exports) {
 /** @license React v16.3.1
  * react.development.js
  *
@@ -1834,7 +1834,7 @@ if ("development" !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":9,"fbjs/lib/emptyObject":12,"fbjs/lib/invariant":18,"fbjs/lib/warning":20,"fbjs/lib/emptyFunction":17,"prop-types/checkPropTypes":10}],4:[function(require,module,exports) {
+},{"object-assign":10,"fbjs/lib/emptyObject":18,"fbjs/lib/invariant":22,"fbjs/lib/warning":19,"fbjs/lib/emptyFunction":13,"prop-types/checkPropTypes":11}],5:[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -1842,7 +1842,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.production.min.js":7,"./cjs/react.development.js":8}],15:[function(require,module,exports) {
+},{"./cjs/react.production.min.js":8,"./cjs/react.development.js":9}],14:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1876,7 +1876,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],16:[function(require,module,exports) {
+},{}],15:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -1913,7 +1913,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],13:[function(require,module,exports) {
+},{}],16:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1979,7 +1979,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],25:[function(require,module,exports) {
+},{}],26:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2002,7 +2002,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],22:[function(require,module,exports) {
+},{}],23:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2025,7 +2025,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":25}],14:[function(require,module,exports) {
+},{"./isNode":26}],17:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2063,7 +2063,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":22}],5:[function(require,module,exports) {
+},{"./isTextNode":23}],6:[function(require,module,exports) {
 /** @license React v16.3.1
  * react-dom.production.min.js
  *
@@ -2310,7 +2310,7 @@ var Gg={createPortal:Fg,findDOMNode:function(a){if(null==a)return null;if(1===a.
 D("40");return a._reactRootContainer?(X.unbatchedUpdates(function(){Eg(null,null,a,!1,function(){a._reactRootContainer=null})}),!0):!1},unstable_createPortal:function(){return Fg.apply(void 0,arguments)},unstable_batchedUpdates:X.batchedUpdates,unstable_deferredUpdates:X.deferredUpdates,flushSync:X.flushSync,unstable_flushControlled:X.flushControlled,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{EventPluginHub:Qa,EventPluginRegistry:xa,EventPropagators:jb,ReactControlledComponent:Zb,ReactDOMComponentTree:Xa,
 ReactDOMEventListener:Zd},unstable_createRoot:function(a,b){return new sg(a,!0,null!=b&&!0===b.hydrate)}};X.injectIntoDevTools({findFiberByHostInstance:Ta,bundleType:0,version:"16.3.1",rendererPackageName:"react-dom"});var Hg=Object.freeze({default:Gg}),Ig=Hg&&Gg||Hg;module.exports=Ig["default"]?Ig["default"]:Ig;
 
-},{"react":4,"fbjs/lib/ExecutionEnvironment":15,"object-assign":9,"fbjs/lib/emptyFunction":17,"fbjs/lib/getActiveElement":16,"fbjs/lib/shallowEqual":13,"fbjs/lib/containsNode":14,"fbjs/lib/emptyObject":12}],23:[function(require,module,exports) {
+},{"react":5,"fbjs/lib/ExecutionEnvironment":14,"object-assign":10,"fbjs/lib/emptyFunction":13,"fbjs/lib/getActiveElement":15,"fbjs/lib/shallowEqual":16,"fbjs/lib/containsNode":17,"fbjs/lib/emptyObject":18}],25:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2341,7 +2341,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],19:[function(require,module,exports) {
+},{}],21:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2378,7 +2378,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":23}],24:[function(require,module,exports) {
+},{"./hyphenate":25}],24:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -2408,7 +2408,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],21:[function(require,module,exports) {
+},{}],20:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2446,7 +2446,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":24}],6:[function(require,module,exports) {
+},{"./camelize":24}],7:[function(require,module,exports) {
 /** @license React v16.3.1
  * react-dom.development.js
  *
@@ -19034,7 +19034,7 @@ if ("development" !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"react":4,"fbjs/lib/invariant":18,"fbjs/lib/warning":20,"fbjs/lib/ExecutionEnvironment":15,"object-assign":9,"fbjs/lib/emptyFunction":17,"prop-types/checkPropTypes":10,"fbjs/lib/getActiveElement":16,"fbjs/lib/shallowEqual":13,"fbjs/lib/containsNode":14,"fbjs/lib/emptyObject":12,"fbjs/lib/hyphenateStyleName":19,"fbjs/lib/camelizeStyleName":21}],3:[function(require,module,exports) {
+},{"react":5,"fbjs/lib/invariant":22,"fbjs/lib/warning":19,"fbjs/lib/ExecutionEnvironment":14,"object-assign":10,"fbjs/lib/emptyFunction":13,"prop-types/checkPropTypes":11,"fbjs/lib/getActiveElement":15,"fbjs/lib/shallowEqual":16,"fbjs/lib/containsNode":17,"fbjs/lib/emptyObject":18,"fbjs/lib/hyphenateStyleName":21,"fbjs/lib/camelizeStyleName":20}],4:[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -19070,7 +19070,195 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.production.min.js":5,"./cjs/react-dom.development.js":6}],2:[function(require,module,exports) {
+},{"./cjs/react-dom.production.min.js":6,"./cjs/react-dom.development.js":7}],3:[function(require,module,exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+},{}],2:[function(require,module,exports) {
+var process = require("process");
 "use strict";
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -19093,6 +19281,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var RATE = 1000 / 60;
 
+var VERBOSE = undefined;
 
 function getCameraPosition() {
   var scene = document.querySelector('a-scene');
@@ -19162,69 +19351,56 @@ var App = function (_React$Component) {
     };
     window.requestAnimationFrame(animate);
 
-    //console.log('TKTK', navigator.userAgent);
     if (navigator.userAgent !== 'Exokit') return _possibleConstructorReturn(_this);
-    //console.log('TKTK2');
 
-    _this.HOST = '24.15.216.102';
-    _this.PORT = 1337;
+    _this.HOST = undefined || '24.15.216.102';
+    _this.PORT = undefined ? parseInt(undefined) : 1337;
 
-    {
-      //console.log('Connecting to ' + this.HOST);
-      var id = Math.floor(Math.random() * Math.pow(2, 64)).toString(16);
+    if (typeof dgram !== 'undefined') {
+      _this.client = dgram.createSocket('udp4');
+      _this.clientID = Math.floor(Math.random() * Math.pow(2, 64)).toString(16);
 
-      var client;
-      if (typeof dgram !== 'undefined') {
-        client = dgram.createSocket('udp4');
-      }
-      var addr = void 0;
+      console.log('Connecting to ' + _this.HOST + ':' + _this.PORT);
 
-      client && client.on('message', function (data, remote) {
+      _this.client.on('message', function (data, remote) {
         var pkt = JSON.parse(data);
         _this.setState({ players: pkt }, function () {
-          //console.log({players: this.state.players});
-          window.pp({ type: 'recv', pkt: pkt, remote: remote });
+          if (VERBOSE) {
+            console.dir({ players: _this.state.players });
+            window.pp({ type: 'recv', pkt: pkt, remote: remote });
+          }
           _this.forceUpdate();
         });
       });
 
-      client && client.bind(0, function () {
-        //console.log('addr: ' + JSON.stringify(client.address()));
-        addr = client.address();
-        //console.log('listening ' + JSON.stringify(addr));
-      });
+      _this.client.bind(0, function () {
+        var prev = Date.now();
+        var tick = function tick() {
+          if (Date.now() - prev > 1000) {
+            Object.entries(_this.state.players).forEach(function (_ref) {
+              var _ref2 = _slicedToArray(_ref, 2),
+                  id = _ref2[0],
+                  player = _ref2[1];
 
-      var tick = function tick() {
+              console.dir({ id: id, player: player });
+            });
+            prev = Date.now();
+          }
+          var pos = getCameraPosition();
+          var pkt = JSON.stringify({
+            id: _this.clientID,
+            message: 'My KungFu is Good!',
+            props: { pos: [pos.x, pos.y, pos.z] }
+          });
 
-        /*
-        {
-          var cameraEl = document.querySelector('#camera');
-          var worldPos = new THREE.Vector3();
-          worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
-          console.log('MY POS', JSON.stringify(pos));
-        }
-        */
-        //console.log('tick');
-        if (_this.scene) {
-          //console.dir(this.scene.camera ? this.scene.camera.position : 'nope');
-        }
-
-        var pos = getCameraPosition();
-        var pkt = JSON.stringify({ id: id,
-          port: addr.port,
-          message: 'My KungFu is Good!',
-          props: { pos: [pos.x, pos.y, pos.z]
-            //[Math.random(), Math.random(), Math.random()]
-          } });
-
-        client && client.send(pkt, _this.PORT, _this.HOST, function (err, bytes) {
-          if (err) throw err;
-          //console.log('UDP message sent to ' + HOST +':'+ PORT);
-          //window.pp({type: 'send', pkt}, {depth: null});
-        });
+          _this.client.send(pkt, _this.PORT, _this.HOST, function (err, bytes) {
+            if (err) throw err;
+            //console.log('UDP message sent to ' + this.HOST +':'+ this.PORT);
+          });
+          setTimeout(tick, RATE);
+        };
         setTimeout(tick, RATE);
-      };
-      setTimeout(tick, RATE);
+      });
     }
     return _this;
   }
@@ -19242,10 +19418,10 @@ var App = function (_React$Component) {
 
         //console.log('render ' + Object.keys(this.state.players).length),
 
-        Object.entries(this.state.players).map(function (_ref) {
-          var _ref2 = _slicedToArray(_ref, 2),
-              id = _ref2[0],
-              p = _ref2[1];
+        Object.entries(this.state.players).map(function (_ref3) {
+          var _ref4 = _slicedToArray(_ref3, 2),
+              id = _ref4[0],
+              p = _ref4[1];
 
           //var pos = "-1 0.5 -3"
           var pos = p.props.pos.join(' ');
@@ -19283,7 +19459,28 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 (0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById("root"));
-},{"react":4,"react-dom":3}],0:[function(require,module,exports) {
+
+process.stdin.resume(); //so the program will not close instantly
+
+function exitHandler(options, err) {
+  if (options.cleanup) console.log('clean');
+  if (err) console.log(err.stack);
+  if (options.exit) process.exit();
+}
+
+//do something when app is closing
+process.on('exit', exitHandler.bind(null, { cleanup: true }));
+
+//catches ctrl+c event
+process.on('SIGINT', exitHandler.bind(null, { exit: true }));
+
+// catches "kill pid" (for example: nodemon restart)
+process.on('SIGUSR1', exitHandler.bind(null, { exit: true }));
+process.on('SIGUSR2', exitHandler.bind(null, { exit: true }));
+
+//catches uncaught exceptions
+process.on('uncaughtException', exitHandler.bind(null, { exit: true }));
+},{"react":5,"react-dom":4,"process":3}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -19301,7 +19498,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://localhost:53315/');
+  var ws = new WebSocket('ws://localhost:58688/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

@@ -1,6 +1,7 @@
 const RATE = 1000/60;
 import React from "react";
 import { render } from "react-dom";
+const VERBOSE = process.env.VERBOSE;
 
 function getCameraPosition() {
   var scene = document.querySelector('a-scene');
@@ -64,74 +65,53 @@ class App extends React.Component {
     window.requestAnimationFrame(animate);
 
 
-    //console.log('TKTK', navigator.userAgent);
     if (navigator.userAgent !== 'Exokit') return;
-    //console.log('TKTK2');
 
-    this.HOST = '24.15.216.102'
-    this.PORT = 1337
+    this.HOST = process.env.HOST || '24.15.216.102'
+    this.PORT = process.env.PORT ? parseInt(process.env.PORT) : 1337;
 
-    {
-      //console.log('Connecting to ' + this.HOST);
-      var id = Math.floor(Math.random()*Math.pow(2,64)).toString(16)
+    if (typeof dgram !== 'undefined') {
+      this.client = dgram.createSocket('udp4');
+      this.clientID = Math.floor(Math.random()*Math.pow(2,64)).toString(16)
 
-      var client;
-      if (typeof dgram !== 'undefined') {
-        client = dgram.createSocket('udp4');
-      }
-      let addr;
+      console.log('Connecting to ' + this.HOST + ':' + this.PORT);
 
-      client && client.on('message', (data, remote) => {
+      this.client.on('message', (data, remote) => {
         var pkt = JSON.parse(data);
         this.setState({players: pkt},
-        
           () => {
-            //console.log({players: this.state.players});
-            window.pp({type: 'recv', pkt, remote})
+            if (VERBOSE) {
+              console.dir({players: this.state.players});
+              window.pp({type: 'recv', pkt, remote})
+            }
             this.forceUpdate();
-          }
-        );
+          });
       });
 
+      this.client.bind(0, () => {
+        let prev = Date.now();
+        let tick = () => {
+          if (Date.now() - prev > 1000) {
+            Object.entries(this.state.players).forEach(([id, player]) => {
+              console.dir({id, player});
+            });
+            prev = Date.now();
+          }
+          var pos = getCameraPosition();
+          var pkt = JSON.stringify({
+            id: this.clientID,
+            message: 'My KungFu is Good!',
+            props: {pos: [pos.x, pos.y, pos.z]}
+          });
 
-      client && client.bind(0,
-        () => {
-          //console.log('addr: ' + JSON.stringify(client.address()));
-          addr = client.address();
-          //console.log('listening ' + JSON.stringify(addr));
-        });
-
-      let tick = () => {
-
-        /*
-        {
-          var cameraEl = document.querySelector('#camera');
-          var worldPos = new THREE.Vector3();
-          worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
-          console.log('MY POS', JSON.stringify(pos));
+          this.client.send(pkt, this.PORT, this.HOST, (err, bytes) => {
+            if (err) throw err;
+            //console.log('UDP message sent to ' + this.HOST +':'+ this.PORT);
+          });
+          setTimeout(tick, RATE);
         }
-        */
-        //console.log('tick');
-        if (this.scene) {
-          //console.dir(this.scene.camera ? this.scene.camera.position : 'nope');
-        }
-
-        var pos = getCameraPosition();
-        var pkt = JSON.stringify({id,
-          port: addr.port,
-          message: 'My KungFu is Good!',
-          props: {pos: [pos.x, pos.y, pos.z]}
-            //[Math.random(), Math.random(), Math.random()]
-        });
-
-        client && client.send(pkt, this.PORT, this.HOST, (err, bytes) => {
-          if (err) throw err;
-          //console.log('UDP message sent to ' + HOST +':'+ PORT);
-          //window.pp({type: 'send', pkt}, {depth: null});
-        });
         setTimeout(tick, RATE);
-      }
-      setTimeout(tick, RATE);
+      });
     }
   }
 
@@ -174,3 +154,24 @@ class App extends React.Component {
 }
 
 render(<App />, document.getElementById("root"));
+
+process.stdin.resume();//so the program will not close instantly
+
+function exitHandler(options, err) {
+    if (options.cleanup) console.log('clean');
+    if (err) console.log(err.stack);
+    if (options.exit) process.exit();
+}
+
+//do something when app is closing
+process.on('exit', exitHandler.bind(null,{cleanup:true}));
+
+//catches ctrl+c event
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+
+// catches "kill pid" (for example: nodemon restart)
+process.on('SIGUSR1', exitHandler.bind(null, {exit:true}));
+process.on('SIGUSR2', exitHandler.bind(null, {exit:true}));
+
+//catches uncaught exceptions
+process.on('uncaughtException', exitHandler.bind(null, {exit:true}));

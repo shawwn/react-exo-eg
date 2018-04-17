@@ -48,6 +48,8 @@ function main(HOST) {
       if (err) throw err;
       //console.log('UDP message sent to ' + HOST +':'+ PORT);
       pp(pkt, {depth: null});
+     client.close();
+
     });
     setTimeout(tick, 400);
   }
