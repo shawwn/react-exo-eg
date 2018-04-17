@@ -1,5 +1,21 @@
+const RATE = 1000/60;
 import React from "react";
 import { render } from "react-dom";
+
+function getCameraPosition() {
+  var scene = document.querySelector('a-scene');
+  if (scene && scene.camera) {
+    return scene.camera.el.getAttribute('position');
+  } else {
+    return {x: 0, y: 0, z: 0}
+  }
+}
+
+//var util = require('util');
+window.pp = function pp(x) {
+  //console.log(util.inspect(x, {depth: null}));
+  //console.dir(x);
+}
 
 const styles = {
   fontFamily: "sans-serif",
@@ -14,6 +30,7 @@ class App extends React.Component {
       position: '',
       rotation: '',
       color: '#333333',
+      players: {}
     };
 
     const _getGamepad = () => navigator.getGamepads().find(gamepad => gamepad);
@@ -41,13 +58,95 @@ class App extends React.Component {
       };
       lastTrigger = trigger;
 
+
       window.requestAnimationFrame(animate);
     }
     window.requestAnimationFrame(animate);
+
+
+    //console.log('TKTK', navigator.userAgent);
+    if (navigator.userAgent !== 'Exokit') return;
+    //console.log('TKTK2');
+
+    this.HOST = '24.15.216.102'
+    this.PORT = 1337
+
+    {
+      //console.log('Connecting to ' + this.HOST);
+      var id = Math.floor(Math.random()*Math.pow(2,64)).toString(16)
+
+      var client;
+      if (typeof dgram !== 'undefined') {
+        client = dgram.createSocket('udp4');
+      }
+      let addr;
+
+      client && client.on('message', (data, remote) => {
+        var pkt = JSON.parse(data);
+        this.setState({players: pkt},
+        
+          () => {
+            //console.log({players: this.state.players});
+            window.pp({type: 'recv', pkt, remote})
+            this.forceUpdate();
+          }
+        );
+      });
+
+
+      client && client.bind(0,
+        () => {
+          //console.log('addr: ' + JSON.stringify(client.address()));
+          addr = client.address();
+          //console.log('listening ' + JSON.stringify(addr));
+        });
+
+      let tick = () => {
+
+        /*
+        {
+          var cameraEl = document.querySelector('#camera');
+          var worldPos = new THREE.Vector3();
+          worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
+          console.log('MY POS', JSON.stringify(pos));
+        }
+        */
+        //console.log('tick');
+        if (this.scene) {
+          //console.dir(this.scene.camera ? this.scene.camera.position : 'nope');
+        }
+
+        var pos = getCameraPosition();
+        var pkt = JSON.stringify({id,
+          port: addr.port,
+          message: 'My KungFu is Good!',
+          props: {pos: [pos.x, pos.y, pos.z]}
+            //[Math.random(), Math.random(), Math.random()]
+        });
+
+        client && client.send(pkt, this.PORT, this.HOST, (err, bytes) => {
+          if (err) throw err;
+          //console.log('UDP message sent to ' + HOST +':'+ PORT);
+          //window.pp({type: 'send', pkt}, {depth: null});
+        });
+        setTimeout(tick, RATE);
+      }
+      setTimeout(tick, RATE);
+    }
   }
 
   render() {
-    return <a-scene stats>
+    return (<a-scene stats ref={(el) => { window.scene = this.scene = el; }}>
+      {
+        //console.log('render ' + Object.keys(this.state.players).length),
+        
+        Object.entries(this.state.players).map(function([id, p]) {
+        //var pos = "-1 0.5 -3"
+        var pos = p.props.pos.join(' ');
+        var box = (<a-box key={'boxes-'+id} position={pos} rotation="0 45 0" color="#4CC3D9" shadow />);
+        //console.log('BOX ' + id + ' ' + pos);
+        return box;
+      })}
       <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow />
       <a-box position={this.state.position} rotation={this.state.rotation} depth="0.1" height="0.1" width="0.1" color={this.state.color} />
       <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow />
@@ -67,7 +166,10 @@ class App extends React.Component {
         shadow
       />
       <a-sky color="#ECECEC" />
-    </a-scene>;
+    </a-scene>);
+  }
+
+  tick() {
   }
 }
 

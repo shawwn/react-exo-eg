@@ -2,6 +2,7 @@
   "dependencies": {
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "nslookup": "^1.1.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1"
   },
