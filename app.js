@@ -67,8 +67,8 @@ class App extends React.Component {
 
     if (navigator.userAgent !== 'Exokit') return;
 
-    this.HOST = process.env.HOST || '24.15.216.102'
-    this.PORT = process.env.PORT ? parseInt(process.env.PORT) : 1337;
+    this.HOST = process.env.HOST || window.location.hostname;
+    this.PORT = process.env.PORT ? parseInt(process.env.PORT) : parseInt(window.location.port || '80');
 
     if (typeof dgram !== 'undefined') {
       this.client = dgram.createSocket('udp4');
